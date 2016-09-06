@@ -1,100 +1,33 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Laravel</title>
+@extends('layouts.app')
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+@section('title')
+    Index
+@endsection
 
-        <style>
-            html, body {
-                height: 100%;
-            }
+@section('content')
+<div id="content">
 
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato', sans-serif;
-            }
-
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
-
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 96px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-          <div class="row">
-            <div class="large-12 columns space">
-            </div>
-          </div>
-          <div class="row">
-            <div class="large-6 large-centered columns">
-              <div class="row">
-                <div class="large-9 columns">
-                    <div class="tabs-content" data-tabs-content="loginTabs">
-                      <div class="tabs-panel is-active" id="panelCan">
-                        <!-- Login Form Group -->
-                        <form action="/" method="post">
-                          <div class="row">
-                            <div class="large-12 large-centered columns">
-
-                              <div class="row">
-                                <div class="large-11 large-centered columns">
-                                  <h2 id="mainLogo"><img src="/assets/img/loginBackground/icon-clear-thinkers.jpg" style="color: #D72323" alt="lightBulb" height="60" width="60"> Tech Aptitude</h2>
-                                </div>
-                              </div>
-                            
-                              <div class="form-group">
-                                <label></label>
-                                <input type="text" class="form-control" name="email" placeholder="Email">
-                              </div>
-                            </div>
-                          </div>  
-                          <div class="row">
-                            <div class="large-12 columns">
-                              <div class="form-group">
-                                <label></label>
-                                <input type="password" class="form-control" name="password" placeholder="Password">
-                              </div>
-                            </div>
-                          </div>
-                          <div class="row">
-                            <div class="large-12 columns">
-                              <div class="form-group">
-                                  <label>Remember Me</label>
-                                  <input type="checkbox" class="form-control" name="remember" value="yes">
-                              </div>
-                            </div>
-                          </div>
-                          <div class="row">
-                            <div class="large-12 large-centered columns">
-                                <input type="submit" class="button" value="Sign In"/>
-                                <a href="/signup" class="button">Create Account</a>
-                            </div>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                    <!-- end of tabs content -->
-                  
-                </div>
-              </div>
-            </div>
-          </div>
+    <!--==============================slider=================================-->
+    <div class="slider">
+        <div class="camera_wrap">
+          <div data-src="assets/img/beer1.jpg"></div>
+          <div data-src="assets/img/beer2.jpg"></div>
+          <div data-src="assets/img/beer3.jpg"></div>
         </div>
-    </body>
-</html>
+    </div>
+    <!--==============================row1=================================-->
+    <div class="row_1">
+        <div class="container">
+            <p class="title1">Welcome To Trader-Brews!</p>
+            <p class="title2">Trader-Brews is all about trading for that elusive beer that you can't get locally. As you probably already know, most local breweries only distribute in their local area. If you want those beers you usually have to travel a long distance to get them. That's not practical for most people. That's where Trader-Brews comes in. With Trader-Brews, once you create an account, you can create a cellar of the beers you have for trade and then search the cellar of other users for the beers you want to trade for. It's up to the users how they want to do the trade - in person or though shipping. Sign up for an account and get started searching for those elusive beers.</p>
+        </div>
+    </div>
+</div>
+@endsection
+
+
+
+
+
+
+
