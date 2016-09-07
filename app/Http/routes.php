@@ -13,7 +13,7 @@
 
 //Route::resource('cellar', 'CellarController');
 
-Route::GET('/cellar', 'CellarController@index', ['middleware' => 'auth']);
+Route::GET('/cellar', 'CellarController@index');
 	
 /*
 |--------------------------------------------------------------------------

@@ -20,7 +20,7 @@ class CellarController extends Controller
         $this->middleware('auth');
 
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -28,7 +28,7 @@ class CellarController extends Controller
      */
     public function index()
     {
-        //$site_title = "Cellar";
+        // Grab all records from the cellar table with the user id
         $cellar = Cellar::where('id', Auth::user()->id)->get();
         return view('/cellar', compact('cellar'));
     }
