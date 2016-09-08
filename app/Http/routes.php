@@ -18,6 +18,9 @@ Route::get('/cellar', 'CellarController@index'); //, ['middleware' => 'auth']);
 
 // Logout
 Route::get('auth/logout', 'Auth\AuthController@logout');
+
+
+Route::post('/profile', ['uses' => 'ProfileController@show']);
 	
 /*
 |--------------------------------------------------------------------------

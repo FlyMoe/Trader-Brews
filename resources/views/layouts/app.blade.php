@@ -58,7 +58,7 @@
           <div class="container">
             <nav class="navbar navbar-default navbar-static-top tm_navbar" role="navigation">
                 <ul class="nav sf-menu">
-                  <li class="active"><a href="/">home</a>
+                  <li class="{{ Request::is('/') ? "active" : "" }}"><a href="/">home</a>
                     <ul>
                       <li><img src="assets/img/arrowup.png" alt=""><a href="#">info</a></li>
                       <li><a href="#">profile</a></li>
@@ -70,9 +70,9 @@
                       </li>
                     </ul>
                   </li>
-                  <li><a href="{{ url('/about_me') }}">about me</a></li>
-                  <li><a href="{{ url('/profile') }}">Profile</a></li>
-                  <li><a href="{{ url('/cellar') }}">Cellar</a></li>
+                  <li class="{{ Request::is('about_me') ? "active" : "" }}"><a href="{{ url('/about_me') }}">about me</a></li>
+                  <li class="{{ Request::is('profile') ? "active" : "" }}"><a href="{{ url('/profile') }}">Profile</a></li>
+                  <li class="{{ Request::is('cellar') ? "active" : "" }}"><a href="{{ url('/cellar') }}">Cellar</a></li>
                 </ul>
                 <h2 class="navbar-brand-right login">
                     @if (Auth::guest())

@@ -17,10 +17,15 @@
               <div class="col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-lg-2 col-md-2 col-sm-2">
                 <img src="http://placehold.it/200x100">
               </div>
+              {!! Form::open(array('url' => 'profile')) !!}
               <div class="col-lg-6 col-md-6 col-sm-6">
                   <div class="space">
+                    {!! Form::label('firstname', 'First Name') !!}<br />
+                    {!! Form::text('firstname') !!}
                       First Name
                       <input id="firstname" type="text" class="form-control" name="firstname" value="{{ old('firstname') }}">
+                  }
+                  }
                   </div>
                    <div class="space">
                       Last Name
@@ -44,6 +49,7 @@
                       </button>
                   </div>
               </div>
+              {!! Form::close() !!}
             </form>           
           </div>
         </div>
