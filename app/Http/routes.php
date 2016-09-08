@@ -13,7 +13,11 @@
 
 //Route::resource('cellar', 'CellarController');
 
-Route::GET('/cellar', 'CellarController@index');
+// Cellar 
+Route::get('/cellar', 'CellarController@index'); //, ['middleware' => 'auth']);
+
+// Logout
+Route::get('auth/logout', 'Auth\AuthController@logout');
 	
 /*
 |--------------------------------------------------------------------------
@@ -70,7 +74,7 @@ Route::Group(['middleware' => ['web']], function () {
 	    return view('auth/login');
 	});
 
-
+	 
 	// route to show the login form
 	//Route::get('login', array('uses' => 'HomeController@showLogin'));
 

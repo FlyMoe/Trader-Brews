@@ -36,7 +36,7 @@
                   </tr>
                   <!-- Rows -->
                  
-                  @foreach( $cellar as $cell)
+                  @foreach( $cellars as $cell)
                     <tr>
                       <td class="beerColumn">
                         <?php echo $cell->name ?><br \>

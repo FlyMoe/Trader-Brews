@@ -1,26 +1,22 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Controllers\Controller;
-use Illuminate\Database\Eloquent;
+
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use App\Cellar;
+
 use App\Http\Requests;
 
-
-
-
-class CellarController extends Controller
+class ProfileController extends Controller
 {
 
     public function __construct()
     {
+        // User has to log into the profile page
         $this->middleware('auth');
 
     }
 
+    /**
     /**
      * Display a listing of the resource.
      *
@@ -28,9 +24,7 @@ class CellarController extends Controller
      */
     public function index()
     {
-        // Grab all records from the cellar table with the user id
-        $cellars = Cellar::where('id', Auth::user()->id)->get();
-        return view('/cellar', compact('cellars'));
+        //
     }
 
     /**
@@ -62,7 +56,7 @@ class CellarController extends Controller
      */
     public function show($id)
     {
-        
+        //
     }
 
     /**

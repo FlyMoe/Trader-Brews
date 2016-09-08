@@ -50,7 +50,7 @@
 <!--==============================header=================================-->
 <header id="header">
       <div class="container">
-        <h1 class="navbar-brand navbar-brand_"><a href="{{ url('/') }}"><img alt="Grill point" src="assets/img/trader_logo.png"></a></h1>
+        <h1 class="navbar-brand navbar-brand_"><a href="{{ url('/') }}" class="nav_title">Trader-Brews<!-- <img alt="Grill point" src="assets/img/trader_logo.png"></a> --></h1>
        
         
       </div>
@@ -74,23 +74,23 @@
                   <li><a href="{{ url('/profile') }}">Profile</a></li>
                   <li><a href="{{ url('/cellar') }}">Cellar</a></li>
                 </ul>
-            </nav>
-            <h2 class="navbar-brand-right">
-            @if (Auth::guest())
-                <a href="{{ url('/login') }}" class="login">Login</a> | <a href="{{ url('/register') }}" class="login">register</a>
-            @else
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle login" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->firstname . ' ' . Auth::user()->lastname }} <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="/auth/logout">Logout</a></li>
-                    </ul>
-                </li>
-            @endif
-        </h2>
+                <h2 class="navbar-brand-right">
+                    @if (Auth::guest())
+                        <a href="{{ url('/login') }}" class="login">Login</a> | <a href="{{ url('/register') }}" class="login">register</a>
+                    @else
+                      
+                            {{ Auth::user()->firstname . ' ' . Auth::user()->lastname }} <span class="caret"></span>
+                           
+                                <a href="{{ url('/auth/logout') }}" class="login">Logout</a>
+                            
+                      
+                    @endif
+                </h2>
+            </nav>            
           </div>
       </div>
 </header>
-<!--==============================content=================================-->
+<!--==============================content===vvvv==============================-->
 @yield('content')
 
 <!--==============================footer=================================-->
