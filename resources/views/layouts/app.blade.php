@@ -74,16 +74,11 @@
                   <li><a href="{{ url('/profile') }}">Profile</a></li>
                   <li><a href="{{ url('/cellar') }}">Cellar</a></li>
                 </ul>
-                <h2 class="navbar-brand-right">
+                <h2 class="navbar-brand-right login">
                     @if (Auth::guest())
-                        <a href="{{ url('/login') }}" class="login">Login</a> | <a href="{{ url('/register') }}" class="login">register</a>
+                        <a href="{{ url('/login') }}" class="login">Login</a> | <a href="{{ url('/register') }}" class="c">register</a>
                     @else
-                      
-                            {{ Auth::user()->firstname . ' ' . Auth::user()->lastname }} <span class="caret"></span>
-                           
-                                <a href="{{ url('/auth/logout') }}" class="login">Logout</a>
-                            
-                      
+                      {{ Auth::user()->firstname . ' ' . Auth::user()->lastname }}| <a href="{{ url('/auth/logout') }}" class="login">Logout</a>
                     @endif
                 </h2>
             </nav>            
