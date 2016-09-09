@@ -6,13 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Profile extends Model
 {
+    public $table = "profile";
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'user_id', 'firstname', 'lastname', 'address', 'zipcode', 'phonenumber', 'image', 'created_at',
+        'user_id', 'firstname', 'lastname', 'address', 'zipcode', 'phonenumber', 'image',
     ];
 
     /**

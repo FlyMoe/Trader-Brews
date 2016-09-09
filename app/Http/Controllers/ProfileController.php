@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
+use App\Http\Controllers\Controller;
 use App\Profile;
+use Illuminate\Database\Eloquent;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ProfileController extends Controller
 {
@@ -36,6 +38,7 @@ class ProfileController extends Controller
     public function create()
     {
         //
+        return view('/profile');
     }
 
     /**
@@ -46,7 +49,27 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validate the data
+        $this->validate($request, array(
+                'firstname' => 'required|max:255',
+                'lastname' => 'required|max:255',
+                'address' => 'required|max:255',
+                'zipcode' => 'required|integer',
+                //'phonenumber' => 'required|numeric|phone',
+            ));
+
+        // Store in the database
+        $profile = new Profile();
+        $profile->user_id = Auth::user()->id;
+        $profile->firstname = $request->firstname;
+        $profile->lastname = $request->lastname;
+        $profile->address = $request->address;
+        $profile->zipcode = $request->zipcode;
+        $profile->phonenumber = $request->phonenumber;
+        $profile->save();
+        flash('Record has been Saved!', 'success');
+        // Redirect to another page
+        return redirect()->route('profile.show', $profile->id);
     }
 
     /**

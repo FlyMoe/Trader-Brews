@@ -13,44 +13,39 @@
              <h1>Profile</h1>
           </div>
           <div class="row">            
-            <form class="form-horizontal" role="form" method="POST" action="{{ url('/profile_submit') }}">
+            <!-- <form class="form-horizontal" role="form" method="POST" action="{{ url('/profile_submit') }}"> -->
               <div class="col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-lg-2 col-md-2 col-sm-2">
                 <img src="http://placehold.it/200x100">
               </div>
-              {!! Form::open(array('url' => 'profile')) !!}
+              {!! Form::open(array('route' => 'profile.store')) !!}
               <div class="col-lg-6 col-md-6 col-sm-6">
                   <div class="space">
-                    {!! Form::label('firstname', 'First Name') !!}<br />
-                    {!! Form::text('firstname') !!}
-                      First Name
-                      <input id="firstname" type="text" class="form-control" name="firstname" value="{{ old('firstname') }}">
-                  }
-                  }
+                    {!! Form::label('firstname', 'First Name:') !!}<br />
+                    {!! Form::text('firstname', null, array('class' => 'form-control')) !!}
                   </div>
                    <div class="space">
-                      Last Name
-                      <input id="lastname" type="text" class="form-control" name="lastname" value="{{ old('lastname') }}">
+                    {!! Form::label('lastname', 'Last Name:') !!}<br />
+                    {!! Form::text('lastname', null, array('class' => 'form-control')) !!}
+                    <!--   Last Name
+                      <input id="lastname" type="text" class="form-control" name="lastname" value="{{ old('lastname') }}"> -->
                   </div>
                   <div class="space">
-                      Address
-                      <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}">
+                    {!! Form::label('address', 'Address:') !!}<br />
+                    {!! Form::text('address', null, array('class' => 'form-control')) !!}
                   </div>
                   <div class="space">
-                      Zip
-                      <input id="zip" type="text" class="form-control" name="zip" value="{{ old('zip') }}">
+                    {!! Form::label('zipcode', 'Zip Code:') !!}<br />
+                    {!! Form::text('zipcode', null, array('class' => 'form-control')) !!}
                   </div>
                   <div class="space">
-                      Phone
-                      <input id="phone" type="text" class="form-control" name="phone" value="{{ old('phone') }}">
+                    {!! Form::label('phonenumber', 'Phone Number:') !!}<br />
+                    {!! Form::text('phonenumber', null, array('class' => 'form-control')) !!}
                   </div>
                   <div>
-                      <button type="submit" class="btn btn-primary">
-                          <i class="fa fa-btn fa-sign-in"></i> Submit Profile
-                      </button>
+                      {!! Form::submit('Submit Profile', array('class' => 'btn btn-primary')) !!}
                   </div>
               </div>
-              {!! Form::close() !!}
-            </form>           
+              {!! Form::close() !!}      
           </div>
         </div>
     </div>
