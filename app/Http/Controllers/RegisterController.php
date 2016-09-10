@@ -5,22 +5,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent;
 use Illuminate\Http\Request;
 use App\Profile;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests;
 
-//use Carbon\Carbon;
-
-class ProfileController extends Controller
+class RegisterController extends Controller
 {
-
-    public function __construct()
-    {
-        // User has to log into the profile page
-        $this->middleware('auth');
-
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -39,7 +30,6 @@ class ProfileController extends Controller
     public function create()
     {
         //
-        return view('/profile');
     }
 
     /**
@@ -51,17 +41,25 @@ class ProfileController extends Controller
     public function store(Request $request)
     {
         // Validate the data
-        $this->validate($request, array(
-                'firstname' => 'required|max:255',
-                'lastname' => 'required|max:255',
-                'address' => 'required|max:255',
-                'zipcode' => 'required|integer',
+        // $this->validate($request, array(
+        //         'firstname' => 'required|max:255',
+        //         'lastname' => 'required|max:255',
+        //         'address' => 'required|max:255',
+        //         'zipcode' => 'required|integer',
                 //'phonenumber' => 'required|numeric|phone',
-            ));
+            // ));
 
         // Store in the database
+        $user = new User();
+        $user->->firstname = $request->input('firstname');
+        $user->lastname = $request->input('lastname');
+        $user->username = $request->input('username');
+        $user->email = $request->input('email');
+        $user->password = Hash::make($request->input('password'));
+        $user->save();
+
         $profile = new Profile();
-        $profile->user_id = Auth::user()->id;
+        $profile->user_id = $user()->id;
         $profile->firstname = $request->input('firstname');
         $profile->lastname = $request->input('lastname');
         $profile->address = $request->input('address');
@@ -71,7 +69,6 @@ class ProfileController extends Controller
         flash('Record has been Saved!', 'success');
         // Redirect to another page
         return view('profile');
-        //return redirect()->route('/profile', $profile->id);
     }
 
     /**

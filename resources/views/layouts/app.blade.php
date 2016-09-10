@@ -51,15 +51,13 @@
 <header id="header">
       <div class="container">
         <h1 class="navbar-brand navbar-brand_"><a href="{{ url('/') }}" class="nav_title">Trader-Brews<!-- <img alt="Grill point" src="assets/img/trader_logo.png"></a> --></h1>
-       
-        
       </div>
       <div class="menuheader">
           <div class="container">
             <nav class="navbar navbar-default navbar-static-top tm_navbar" role="navigation">
                 <ul class="nav sf-menu">
                   <li class="{{ Request::is('/') ? "active" : "" }}"><a href="/">home</a>
-                    <ul>
+                   <!--  <ul>
                       <li><img src="assets/img/arrowup.png" alt=""><a href="#">info</a></li>
                       <li><a href="#">profile</a></li>
                       <li><a class="last" href="#">news</a>
@@ -68,7 +66,7 @@
                            <li><a class="last" href="#">archive</a></li>                       
                         </ul>
                       </li>
-                    </ul>
+                    </ul> -->
                   </li>
                   <li class="{{ Request::is('about_me') ? "active" : "" }}"><a href="{{ url('/about_me') }}">about me</a></li>
                   <li class="{{ Request::is('profile') ? "active" : "" }}"><a href="{{ url('/profile') }}">Profile</a></li>

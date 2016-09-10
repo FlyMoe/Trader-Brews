@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Profile extends Model
 {
     public $table = "profile";
+    public $timestamps = false;
     /**
      * The attributes that are mass assignable.
      *

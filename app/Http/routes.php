@@ -23,6 +23,8 @@ Route::get('auth/logout', 'Auth\AuthController@logout');
 //Route::post('/profile', ['uses' => 'ProfileController@show']);
 
 Route::resource('profile', 'ProfileController');
+
+//Route::resource('profile', 'ProfileController');
 	
 /*
 |--------------------------------------------------------------------------

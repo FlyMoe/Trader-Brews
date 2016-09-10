@@ -12,6 +12,13 @@
           <div class="row title">
              <h1>Profile</h1>
           </div>
+          @if (session()->has('flash_notification.message'))
+              <div class="alert alert-{{ session('flash_notification.level') }}">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+
+                  {!! session('flash_notification.message') !!}
+              </div>
+          @endif
           <div class="row">            
             <!-- <form class="form-horizontal" role="form" method="POST" action="{{ url('/profile_submit') }}"> -->
               <div class="col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-lg-2 col-md-2 col-sm-2">
