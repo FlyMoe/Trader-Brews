@@ -19,15 +19,11 @@ class UserTableSeeder extends Seeder
         DB::table('users')->delete();
 
         DB::table('users')->insert([
-        ['firstname'=> 'Richard',
-         'lastname' => 'Garcia',
-         'username' => 'fly_moe',
+        ['name'     => 'Richard Garcia',
          'email'    => 'rrgarcia@gmail.com',
-         'password' => Hash::make('family99')
+         'password' => Hash::make('family99'),
         ],
-        ['firstname'=> 'John',
-         'lastname' => 'Stevens',
-         'username' => 'dardlord',
+        ['name'     => 'John Stevens',
          'email'    => 'bob@gmail.com',
          'password' => Hash::make('florida')],
         ]);

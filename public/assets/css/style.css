@@ -1741,6 +1741,14 @@ img {
 	text-align: center;
 }
 
+.cellarName {
+	margin-left: 25px;
+}
+.total {
+	float: right;
+	margin-right: 80px;
+}
+
 .space {
 	padding-bottom: 10px;
 }

@@ -9,9 +9,22 @@
     <!--==============================row5=================================-->
     <div class="row_5">
         <div class="container">
-          <div class="row title">
-             <h1>Cellar</h1>
+         
+          <div class="row">
+             <h4 class="cellarName">
+                @foreach( $users as $user)
+                  <?php 
+                    $name = explode(" ",$user->name);
+                    echo $name[0]."'s";
+                  ?> 
+                @endforeach
+               Cellar
+
+               <span class="total">Total Beers:  | Unique Beers:  | Breweries:</span>
+             </h4>
+             
           </div>
+         
           <div class="row">            
             <form class="form-horizontal" role="form" method="POST" action="{{ url('/profile_submit') }}">
               <div class="table-responsive">

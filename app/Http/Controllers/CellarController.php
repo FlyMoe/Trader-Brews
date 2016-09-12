@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Cellar;
+use App\User;
 use App\Http\Requests;
 
 
@@ -30,7 +31,9 @@ class CellarController extends Controller
     {
         // Grab all records from the cellar table with the user id
         $cellars = Cellar::where('id', Auth::user()->id)->get();
-        return view('/cellar', compact('cellars'));
+        $users = User::where('id', Auth::user()->id)->get();
+        
+        return view('/cellar', compact('cellars', 'users'));
     }
 
     /**

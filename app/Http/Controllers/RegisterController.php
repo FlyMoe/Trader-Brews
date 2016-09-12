@@ -12,6 +12,14 @@ use App\Http\Requests;
 
 class RegisterController extends Controller
 {
+     public function __construct()
+    {
+        // User has to log into the profile page
+        //$this->middleware('auth');
+        //$this->middleware('guest', ['except' => 'getLogout']);
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -50,22 +58,23 @@ class RegisterController extends Controller
             // ));
 
         // Store in the database
+        echo "DUDE";
         $user = new User();
-        $user->->firstname = $request->input('firstname');
+        $user->firstname = $request->input('firstname');
         $user->lastname = $request->input('lastname');
         $user->username = $request->input('username');
         $user->email = $request->input('email');
         $user->password = Hash::make($request->input('password'));
         $user->save();
 
-        $profile = new Profile();
-        $profile->user_id = $user()->id;
-        $profile->firstname = $request->input('firstname');
-        $profile->lastname = $request->input('lastname');
-        $profile->address = $request->input('address');
-        $profile->zipcode = $request->input('zipcode');
-        $profile->phonenumber = $request->input('phonenumber');
-        $profile->save();
+        // $profile = new Profile();
+        // $profile->user_id = $user()->id;
+        // $profile->firstname = $request->input('firstname');
+        // $profile->lastname = $request->input('lastname');
+        // $profile->address = $request->input('address');
+        // $profile->zipcode = $request->input('zipcode');
+        // $profile->phonenumber = $request->input('phonenumber');
+        // $profile->save();
         flash('Record has been Saved!', 'success');
         // Redirect to another page
         return view('profile');

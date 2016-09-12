@@ -13,6 +13,13 @@
 
 //Route::resource('cellar', 'CellarController');
 
+//Route::get('/', 'HomeController@index');
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
+
+Route::get('/login', 'LoginController@login');
+
 // Cellar 
 Route::get('/cellar', 'CellarController@index'); //, ['middleware' => 'auth']);
 
@@ -24,7 +31,7 @@ Route::get('auth/logout', 'Auth\AuthController@logout');
 
 Route::resource('profile', 'ProfileController');
 
-//Route::resource('profile', 'ProfileController');
+//Route::resource('register', 'RegisterController');
 	
 /*
 |--------------------------------------------------------------------------
@@ -38,7 +45,7 @@ Route::resource('profile', 'ProfileController');
 */
 
 Route::Group(['middleware' => ['web']], function () {
-	Route::auth();
+	//Route::auth();
 
 	// Authentication Routes
 	// Route::get('auth/login', 'Auth\AuthController@getLogin');
@@ -72,9 +79,12 @@ Route::Group(['middleware' => ['web']], function () {
 	// });
 
 	// Register
-	Route::get('/register', function () {
-	    return view('auth/register');
-	});
+	// Route::post('/register', function () {
+	//     return view('auth/register');
+	// });
+	//Route::post('/register', 'Auth\AuthController@create');
+	//Route::post('auth/register', 'Auth\AuthController@create');
+	//Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 	// // Log In
 	 Route::get('/login', function () {

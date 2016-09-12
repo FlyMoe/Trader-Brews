@@ -76,7 +76,7 @@
                     @if (Auth::guest())
                         <a href="{{ url('/login') }}" class="login">Login</a> | <a href="{{ url('/register') }}" class="c">register</a>
                     @else
-                      {{ Auth::user()->firstname . ' ' . Auth::user()->lastname }}| <a href="{{ url('/auth/logout') }}" class="login">Logout</a>
+                      {{ Auth::user()->name}}| <a href="{{ url('/auth/logout') }}" class="login">Logout</a>
                     @endif
                 </h2>
             </nav>            
