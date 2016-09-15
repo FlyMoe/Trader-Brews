@@ -30,10 +30,16 @@ class CellarController extends Controller
     public function index()
     {
         // Grab all records from the cellar table with the user id
-        $cellars = Cellar::where('id', Auth::user()->id)->get();
-        $users = User::where('id', Auth::user()->id)->get();
+        //$cellars = DB::table('cellars')->where('user_id', Auth::user()->id)->get();
+
+        //printf('<pre>%s</pre>', print_r($cellars, 1));
+        //$users = User::where('id', Auth::user()->id)->get();
+
+        $cellars = $this->cellars();
+        $users = $this->users();
+        $total_beers = "";
         
-        return view('/cellar', compact('cellars', 'users'));
+        return view('/cellar', compact('cellars', 'users', 'total_beers'));
     }
 
     /**
@@ -54,7 +60,27 @@ class CellarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Store in the database
+        $cellar = new Cellar();
+        $cellar->user_id = Auth::user()->id;
+        $cellar->name = $request->input('name');
+        $cellar->brewery = $request->input('brewery');
+        $cellar->size = $request->input('size');
+        $cellar->bottle_date = $request->input('bottle_date');
+        $cellar->in_cellar = $request->input('in_cellar');
+        $cellar->in_fridge = $request->input('in_fridge');
+        $cellar->save();
+        flash('Record has been Saved!', 'success');
+
+        //printf('<pre>%s</pre>', print_r($cellars, 1));
+
+        // Pull the cellars and users data
+        $cellars = $this->cellars();
+        $users = $this->users();
+        $total_beers = $this->total_beers();
+        
+        // View the cellar blade
+        return view('/cellar', compact('cellars', 'users', 'total_beers'));
     }
 
     /**
@@ -101,4 +127,32 @@ class CellarController extends Controller
     {
         //
     }
+
+    /**
+     * Pull all data from the cellars table where the user_id equals the auth id.
+     *
+     * @return cellars record set
+     */
+    public function cellars() {
+        return (DB::table('cellars')->where('user_id', Auth::user()->id)->get());
+    }
+
+     /**
+     * Pull all data from the users table where the id equals the auth id.
+     *
+     * @return users record set
+     */
+    public function users() {
+        return (User::where('id', Auth::user()->id)->get());
+    }
+
+     /**
+     * Pull all data from the users table where the id equals the auth id.
+     *
+     * @return users record set
+     */
+    public function total_beers() {
+        return (Cellar::where('user_id', Auth::user()->id)->count());
+    }
+
 }

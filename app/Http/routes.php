@@ -31,6 +31,10 @@ Route::get('auth/logout', 'Auth\AuthController@logout');
 
 Route::resource('profile', 'ProfileController');
 
+Route::resource('cellar', 'CellarController');
+
+Route::resource('search', 'SearchController');
+
 //Route::resource('register', 'RegisterController');
 	
 /*

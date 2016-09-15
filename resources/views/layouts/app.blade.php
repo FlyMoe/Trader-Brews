@@ -50,7 +50,7 @@
 <!--==============================header=================================-->
 <header id="header">
       <div class="container">
-        <h1 class="navbar-brand navbar-brand_"><a href="{{ url('/') }}" class="nav_title">Trader-Brews<!-- <img alt="Grill point" src="assets/img/trader_logo.png"></a> --></h1>
+        <h1 class="navbar-brand navbar-brand_"><a href="{{ url('/') }}" class="nav_title">Trader-Brews</a><!-- <img alt="Grill point" src="assets/img/trader_logo.png"> --></h1>
       </div>
       <div class="menuheader">
           <div class="container">
@@ -71,10 +71,11 @@
                   <li class="{{ Request::is('about_me') ? "active" : "" }}"><a href="{{ url('/about_me') }}">about me</a></li>
                   <li class="{{ Request::is('profile') ? "active" : "" }}"><a href="{{ url('/profile') }}">Profile</a></li>
                   <li class="{{ Request::is('cellar') ? "active" : "" }}"><a href="{{ url('/cellar') }}">Cellar</a></li>
+                  <li class="{{ Request::is('search') ? "active" : "" }}"><a href="{{ url('/search') }}">Search</a></li>
                 </ul>
                 <h2 class="navbar-brand-right login">
                     @if (Auth::guest())
-                        <a href="{{ url('/login') }}" class="login">Login</a> | <a href="{{ url('/register') }}" class="c">register</a>
+                        <a href="{{ url('/login') }}" class="login">Login</a> | <a href="{{ url('/register') }}" class="login">register</a>
                     @else
                       {{ Auth::user()->name}}| <a href="{{ url('/auth/logout') }}" class="login">Logout</a>
                     @endif
@@ -83,7 +84,7 @@
           </div>
       </div>
 </header>
-<!--==============================content===vvvv==============================-->
+<!--==============================content=================================-->
 @yield('content')
 
 <!--==============================footer=================================-->
@@ -108,3 +109,6 @@
 <script src="assets/js/tm-scripts.js"></script>
 </body>
 </html>
+
+<!-- Modal is called here -->
+@yield('modal')

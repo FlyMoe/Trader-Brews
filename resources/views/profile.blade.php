@@ -12,6 +12,8 @@
           <div class="row title">
              <h1>Profile</h1>
           </div>
+
+          <!-- Flash messages, which are coming from the controller -->
           @if (session()->has('flash_notification.message'))
               <div class="alert alert-{{ session('flash_notification.level') }}">
                   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -19,8 +21,19 @@
                   {!! session('flash_notification.message') !!}
               </div>
           @endif
-          <div class="row">            
-            <!-- <form class="form-horizontal" role="form" method="POST" action="{{ url('/profile_submit') }}"> -->
+
+          <!-- Show the validation errors -->
+          @if (count($errors) > 0)
+              <div class="alert alert-danger">
+                  <ul>
+                      @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                      @endforeach
+                  </ul>
+              </div>
+          @endif
+
+          <div class="row">
               <div class="col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-lg-2 col-md-2 col-sm-2">
                 <img src="http://placehold.it/200x100">
               </div>

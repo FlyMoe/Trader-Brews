@@ -11,6 +11,27 @@
         <div class="container">
          
           <div class="row">
+
+            <!-- Flash messages, which are coming from the controller -->
+            @if (session()->has('flash_notification.message'))
+              <div class="alert alert-{{ session('flash_notification.level') }}">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+
+                  {!! session('flash_notification.message') !!}
+              </div>
+            @endif
+
+           <!-- Show the validation errors -->
+            @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
              <h4 class="cellarName">
                 @foreach( $users as $user)
                   <?php 
@@ -20,9 +41,18 @@
                 @endforeach
                Cellar
 
-               <span class="total">Total Beers:  | Unique Beers:  | Breweries:</span>
+               <span class="total">Total Beers: <?php echo $total_beers; ?>| Unique Beers:  | Breweries:</span>
              </h4>
-             
+              {!! Form::submit('Add To Cellar', array('class' => 'btn btn-success cellarName', 'data-target' => '#favoritesModal', 'data-toggle' => 'modal')) !!}
+            <!--   <button 
+   type="button" 
+   class="btn btn-primary btn-lg" 
+   data-toggle="modal" 
+   data-target="#favoritesModal">
+  Add to Favorites
+</button> -->
+
+
           </div>
          
           <div class="row">            
@@ -49,23 +79,23 @@
                   </tr>
                   <!-- Rows -->
                  
-                  @foreach( $cellars as $cell)
+                  @foreach( $cellars as $cellar)
                     <tr>
                       <td class="beerColumn">
-                        <?php echo $cell->name ?><br \>
-                        <?php echo $cell->brewery ?>
+                        <?php echo $cellar->name ?><br \>
+                        <?php echo $cellar->brewery ?>
                       </td>
                       <td class="sizeColumn">
-                        <?php echo $cell->size ?>
+                        <?php echo $cellar->size ?>
                       </td>
                        <td class="dateColumn">
-                        <?php echo $cell->bottle_date ?>
+                        <?php echo $cellar->bottle_date ?>
                       </td>
                       <td class="cellarColumn">
-                        <?php echo $cell->in_cellar ?>
+                        <?php echo $cellar->in_cellar ?>
                       </td>
                       <td class="fridgeColumn">
-                        <?php echo $cell->in_fridge ?>
+                        <?php echo $cellar->in_fridge ?>
                       </td>
                     </tr>
                   @endforeach
@@ -76,4 +106,61 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('modal')
+<div class="modal fade" id="favoritesModal" 
+     tabindex="-1" role="dialog" 
+     aria-labelledby="favoritesModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header color">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title .modal_bgcolor" id="favoritesModalLabel">New Cellar Entry</h4>
+      </div>
+      {!! Form::open(array('route' => 'cellar.store', 'class' => 'form-inline')) !!}
+      <div class="modal-body">
+        {!! Form::label('brewery', 'Brewery:') !!}<br />
+        {!! Form::text('brewery', null, array('class' => 'form-control')) !!}
+      </div>
+      <div class="modal-body">
+        {!! Form::label('name', 'Beer:') !!}<br />
+        {!! Form::text('name', null, array('class' => 'form-control')) !!}
+      </div>
+       <div class="modal-body form-group">
+        {!! Form::label('size', 'Size:') !!}<br />
+        {!! Form::select('size', 
+          array(
+            'American/Imperial' => 
+              array('7oz' => '7oz', '12oz' => '12oz', '16oz' => '16oz', '22oz' => '22oz', '24oz' => '24oz', '25oz' => '25oz', '32oz' => '32oz', '40oz' => '40oz', '64oz' => '64oz'), 
+            'Metric' => 
+               array ('187ml' => '187 ml', '250 ml' => '250 ml', '275 ml' => '275 ml', '330 ml' => '330 ml', '341 ml' => '341 ml', '350 ml' => '350 ml', '355 ml' => '355 ml', '375 ml' => '375 ml', '500 ml' => '500 ml', '550' => '550 ml', '650' => '650 ml', '750' => '750 ml', '1 L' => '1 L', '1.5 L' => '1.5 L', '3 L' => '3 L'),
+            'Other' => 
+              array ('Other')
+          )) !!}
+      </div>
+      <div class="modal-body form-group">
+        {!! Form::label('bottle_date', 'Bottle Date:') !!}<br />
+        {!! Form::text('bottle_date', null, array('class' => 'form-control', 'placeholder' => 'YYYY-MM-DD')) !!}
+      </div>
+       <div class="modal-body form-group">
+        {!! Form::label('in_cellar', 'Number in Cellar:') !!}<br />
+        {!! Form::text('in_cellar', null, array('class' => 'form-control', 'placeholder' => 'Enter A Number')) !!}
+      </div>
+       <div class="modal-body form-group">
+        {!! Form::label('in_fridge', 'Number in Fridge:') !!}<br />
+        {!! Form::text('in_fridge', null, array('class' => 'form-control', 'placeholder' => 'Enter A Number')) !!}
+      </div>
+      <div class="modal-footer">
+
+
+        {!! Form::submit('Close', array('class' => 'btn btn-danger', 'data-dismiss' => 'modal')) !!}
+
+        {!! Form::submit('Submit Cellar Entry', array('class' => 'btn btn-primary')) !!}
+      </div>
+      {!! Form::close() !!}      
+    </div>
+  </div>
 @endsection

@@ -276,7 +276,7 @@ header {
 	color: #ffcbd2;
 	text-decoration: none;
 }
-.tm_navbar .nav > .active > a, .tm_navbar .nav > .active > a:hover, .tm_navbar .nav > .active > a:focus {
+.tm_navbar .nav > .active > a, .tm_navbar .nav > .active > a:hover, .tm_navbar .nav > .active > c {
 	color: #ffcbd2;
 	background: transparent;
 }
@@ -1709,6 +1709,18 @@ img {
 	text-shadow: 1px 1px 2px #333639;
 }
 
+.login a {
+	text-decoration: none;
+}
+
+.login a:hover {
+	color: #ffcbd2 !important;
+}
+
+.login a:active {
+	color: #ffcbd2 !important;
+}
+
 .nav_title {
 	text-decoration: none;
 	color: #ffffff !important;
@@ -1721,6 +1733,7 @@ img {
 	border: none;
 	border-radius: 0;
 	text-shadow: 1px 1px 2px #333639;
+	text-decoration: none !important;
 }
 
 .navbar-brand-right {
@@ -1744,6 +1757,11 @@ img {
 .cellarName {
 	margin-left: 25px;
 }
+
+input.cellarName {
+	margin-bottom: 10px;
+}
+
 .total {
 	float: right;
 	margin-right: 80px;
@@ -1752,6 +1770,12 @@ img {
 .space {
 	padding-bottom: 10px;
 }
+
+.color {
+	background-color: #6F8591;
+	color: white;
+}
+
 
 @import url(http://fonts.googleapis.com/css?family=Roboto);
 
