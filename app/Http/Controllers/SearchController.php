@@ -1,9 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use App\Cellar;
+use App\User;
 use App\Http\Requests;
 
 class SearchController extends Controller
@@ -90,4 +94,25 @@ class SearchController extends Controller
     {
         //
     }
+
+    public function cellar_Search(Request $request) {
+
+        $beername = $request->input('name');
+        $brewery = $request->input('brewery');
+        // $firstname = $request->input('firstname');
+        // $lastname = $request->input('lastname');
+        $name = $request->input('firstname') . " " . $request->input('lastname');
+
+        $cellars = DB::table('cellars')
+                    ->join('users', 'cellars.user_id', '=', 'users.id')
+                    //->select('cellars.*', 'profile.*')
+                    ->where('cellars.name', $beername)
+                    ->orWhere('cellars.brewery', $brewery)
+                    ->orWhere('users.name', $name)
+                    ->get();
+        print_r($cellars);
+        //printf('<pre>%s</pre>', print_r($cellars, 1));
+        return view('search_results', compact('cellars'));
+    }
+
 }

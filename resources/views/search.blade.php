@@ -33,42 +33,35 @@
             @endif
 
             You can search cellars by beer name, brewery, or user name.<br /><br />
-
           </div>
-         
 
+          <!-- Form --> 
           <div class="row">
-            {!! Form::open(array('route' => 'profile.store', 'class' => 'form-inline')) !!}
+            {!! Form::open(array('url' => 'cellarSearch', 'class' => 'form-inline')) !!}
               <div class="form-group">
                 {!! Form::label('name', 'Beer Name:') !!}<br />
                 {!! Form::text('name', null, array('class' => 'form-control')) !!}
               </div>
               <div class="form-group">
-                {!! Form::label('lastname', 'Last Name:') !!}<br />
-                {!! Form::text('lastname', null, array('class' => 'form-control')) !!}
-                <!--   Last Name
-                  <input id="lastname" type="text" class="form-control" name="lastname" value="{{ old('lastname') }}"> -->
+                {!! Form::label('brewery', 'Brewery:') !!}<br />
+                {!! Form::text('brewery', null, array('class' => 'form-control')) !!}
               </div>
               <div class="form-group">
                 {!! Form::label('firstname', 'First Name:') !!}<br />
                 {!! Form::text('firstname', null, array('class' => 'form-control')) !!}
-                <!--   Last Name
-                  <input id="lastname" type="text" class="form-control" name="lastname" value="{{ old('lastname') }}"> -->
               </div>
               <div class="form-group">
                 {!! Form::label('lastname', 'Last Name:') !!}<br />
                 {!! Form::text('lastname', null, array('class' => 'form-control')) !!}
-                <!--   Last Name
-                  <input id="lastname" type="text" class="form-control" name="lastname" value="{{ old('lastname') }}"> -->
               </div>
               <div>
                   {!! Form::submit('Submit Cellar Search', array('class' => 'btn btn-primary')) !!}
               </div>
-                </div>
-                {!! Form::close() !!}      
-            </div>
+            {!! Form::close() !!}      
           </div>
-        </div>
+         <!--  End Form -->
+
+      </div>
     </div>
 </div>
 @endsection

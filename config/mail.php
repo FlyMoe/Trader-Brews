@@ -16,7 +16,8 @@ return [
     |
     */
 
-    'driver' => env('MAIL_DRIVER', 'smtp'),
+    //'driver' => env('MAIL_DRIVER', 'smtp'),
+    'driver' => env('smtp'),
 
     /*
     |--------------------------------------------------------------------------
@@ -29,7 +30,8 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    //'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env('smtp.mailgun.org'),
 
     /*
     |--------------------------------------------------------------------------
@@ -42,7 +44,8 @@ return [
     |
     */
 
-    'port' => env('MAIL_PORT', 587),
+    //'port' => env('MAIL_PORT', 587),
+    'port' => env(587),
 
     /*
     |--------------------------------------------------------------------------
@@ -55,7 +58,8 @@ return [
     |
     */
 
-    'from' => ['address' => null, 'name' => null],
+    //'from' => ['address' => null, 'name' => null],
+    'from' => array('address' => 'from@example.com', 'name' => 'John Smith'),
 
     /*
     |--------------------------------------------------------------------------
@@ -68,7 +72,8 @@ return [
     |
     */
 
-    'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+    //'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+    'encryption' => env('tls'),
 
     /*
     |--------------------------------------------------------------------------
@@ -81,7 +86,8 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME'),
+    //'username' => env('MAIL_USERNAME'),
+    'username' => 'sendgrid_username',
 
     /*
     |--------------------------------------------------------------------------
@@ -94,7 +100,8 @@ return [
     |
     */
 
-    'password' => env('MAIL_PASSWORD'),
+    //'password' => env('MAIL_PASSWORD'),
+    'password' => 'sendgrid_password',
 
     /*
     |--------------------------------------------------------------------------
