@@ -99,7 +99,7 @@
                      <li><a href="#"><img src="assets/img/follow_icon4.png" alt=""></a></li>
                 </ul>
             </div> -->
-            <div class="col-lg-6 col-md-6 col-sm-6 footercol">
+            <div class="col-lg-8 col-md-8 col-sm-8 footercol">
                 <p class="footerpriv">&copy; 2016 &bull;Trader-Brews</p>
             </div>
         </div>

@@ -1,22 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Controllers\Controller;
-use Illuminate\Database\Eloquent;
+
 use Illuminate\Http\Request;
-use App\Profile;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+
 use App\Http\Requests;
 
-//use Carbon\Carbon;
-
-class ProfileController extends Controller
+class SearchController extends Controller
 {
 
     public function __construct()
     {
-        // User has to log into the profile page
         $this->middleware('auth');
 
     }
@@ -28,7 +22,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        //
+        return view('/search');
     }
 
     /**
@@ -39,7 +33,6 @@ class ProfileController extends Controller
     public function create()
     {
         //
-        return view('/profile');
     }
 
     /**
@@ -50,27 +43,7 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        // Validate the data
-        $this->validate($request, array(
-                'firstname' => 'required|max:255',
-                'lastname' => 'required|max:255',
-                'address' => 'required|max:255',
-                'zipcode' => 'required|integer',
-                //'phonenumber' => 'required|numeric|phone',
-            ));
-
-        // Store in the database
-        $profile = new Profile();
-        $profile->user_id = Auth::user()->id;
-        $profile->firstname = $request->input('firstname');
-        $profile->lastname = $request->input('lastname');
-        $profile->address = $request->input('address');
-        $profile->zipcode = $request->input('zipcode');
-        $profile->phonenumber = $request->input('phonenumber');
-        $profile->save();
-        flash('Record has been Saved!', 'success');
-        // Redirect to another page
-        return view('profile');
+        //
     }
 
     /**

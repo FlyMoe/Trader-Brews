@@ -37,9 +37,11 @@ class CellarController extends Controller
 
         $cellars = $this->cellars();
         $users = $this->users();
-        $total_beers = "";
-        
-        return view('/cellar', compact('cellars', 'users', 'total_beers'));
+        $total_beers = $this->total_beers();
+        $unique_beers = $this->unique_beers();
+        $brewery = $this->brewery();
+//printf('<pre>%s</pre>', print_r($unique_beers, 1));
+        return view('/cellar', compact('cellars', 'users', 'total_beers', 'unique_beers', 'brewery'));
     }
 
     /**
@@ -78,9 +80,12 @@ class CellarController extends Controller
         $cellars = $this->cellars();
         $users = $this->users();
         $total_beers = $this->total_beers();
-        
+        $unique_beers = $this->unique_beers();
+        $brewery = $this->brewery();
+// printf('<pre>%s</pre>', print_r($unique_beers, 1));
+// var_dump($unique_beers);
         // View the cellar blade
-        return view('/cellar', compact('cellars', 'users', 'total_beers'));
+        return view('/cellar', compact('cellars', 'users', 'total_beers', 'unique_beers', 'brewery'));
     }
 
     /**
@@ -125,7 +130,14 @@ class CellarController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // Find record in the cellar database with the id $id and delete it.
+        $cellar = DB::table('cellars')->where('id', $id)->delete();
+
+        // Display success message
+        flash('Successfully deleted the cellar entry!', 'success');
+
+        // redirect
+        return redirect('/cellar');
     }
 
     /**
@@ -149,10 +161,30 @@ class CellarController extends Controller
      /**
      * Pull all data from the users table where the id equals the auth id.
      *
-     * @return users record set
+     * @return cellar record set
      */
     public function total_beers() {
         return (Cellar::where('user_id', Auth::user()->id)->count());
     }
+
+     /**
+     * Pull all data from the cellars table where the id equals the auth id and the name is 
+     * distinct.
+     *
+     * @return cellar record set
+     */
+    public function unique_beers() {
+        return (Cellar::where('user_id', Auth::user()->id)->distinct()->count('name'));
+    }
+
+     /**
+     * Pull all data from the cellars table where the id equals the auth id.
+     *
+     * @return cellar record set
+     */
+    public function brewery() {
+        return (Cellar::where('user_id', Auth::user()->id)->distinct()->count('brewery'));
+    }
+
 
 }

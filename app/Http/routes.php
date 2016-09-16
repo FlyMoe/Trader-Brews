@@ -26,6 +26,8 @@ Route::get('/cellar', 'CellarController@index'); //, ['middleware' => 'auth']);
 // Logout
 Route::get('auth/logout', 'Auth\AuthController@logout');
 
+// Cellar 
+Route::get('/search', 'SearchrController@index');
 
 //Route::post('/profile', ['uses' => 'ProfileController@show']);
 
@@ -34,6 +36,8 @@ Route::resource('profile', 'ProfileController');
 Route::resource('cellar', 'CellarController');
 
 Route::resource('search', 'SearchController');
+
+//Route::DELETE('/cellar/{id}', 'CellarrController@destroy');
 
 //Route::resource('register', 'RegisterController');
 	
@@ -103,5 +107,5 @@ Route::Group(['middleware' => ['web']], function () {
 	//Route::post('login', array('uses' => 'HomeController@doLogin'));
 
 
-	Route::get('/home', 'HomeController@index');
+	//Route::get('/home', 'HomeController@index');
 });

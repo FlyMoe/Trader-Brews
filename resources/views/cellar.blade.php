@@ -41,7 +41,7 @@
                 @endforeach
                Cellar
 
-               <span class="total">Total Beers: <?php echo $total_beers; ?>| Unique Beers:  | Breweries:</span>
+               <span class="total">Total Beers: {{$total_beers}} | Unique Beers: {{$unique_beers}}  | Breweries: {{$brewery}}</span>
              </h4>
               {!! Form::submit('Add To Cellar', array('class' => 'btn btn-success cellarName', 'data-target' => '#favoritesModal', 'data-toggle' => 'modal')) !!}
             <!--   <button 
@@ -55,8 +55,7 @@
 
           </div>
          
-          <div class="row">            
-            <form class="form-horizontal" role="form" method="POST" action="{{ url('/profile_submit') }}">
+          <div class="row">
               <div class="table-responsive">
                 <table class="table table-bordered" id="main">
                   <!-- Header -->
@@ -75,6 +74,9 @@
                     </td>
                     <td class="fridgeColumn color">
                       In Fridge
+                    </td>
+                    <td class="fridgeColumn color">
+                      
                     </td>
                   </tr>
                   <!-- Rows -->
@@ -96,6 +98,11 @@
                       </td>
                       <td class="fridgeColumn">
                         <?php echo $cellar->in_fridge ?>
+                      </td>
+                      <td class="deleteColumn">
+                        {!! Form::open(['method' => 'DELETE','route' => ['cellar.destroy', $cellar->id]]) !!}
+                        {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                        {!! Form::close() !!}
                       </td>
                     </tr>
                   @endforeach
