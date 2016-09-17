@@ -68,7 +68,13 @@
                       </li>
                     </ul> -->
                   </li>
-                  <li class="{{ Request::is('profile') ? "active" : "" }}"><a href="{{ url('/profile') }}">Profile</a></li>
+                  <li class="{{ Request::is('profile') ? "active" : "" }}"><a href="{{ url('/profile') }}">Profile</a>
+                     <ul>
+                        <li>
+                          <img src="assets/img/arrowup.png" alt=""><a href="{{ url('/update_profile') }}">Update Profile</a>
+                        </li>
+                      </ul>
+                  </li>
                   <li class="{{ Request::is('cellar') ? "active" : "" }}"><a href="{{ url('/cellar') }}">Cellar</a></li>
                   <li class="{{ Request::is('search') ? "active" : "" }}"><a href="{{ url('/search') }}">Search</a></li>
                    <li class="{{ Request::is('about_me') ? "active" : "" }}"><a href="{{ url('/about_me') }}">About</a></li>

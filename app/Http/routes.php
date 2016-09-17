@@ -31,6 +31,8 @@ Route::get('/search', 'SearchController@index');
 
 Route::get('/profile', 'ProfileController@index');
 
+Route::get('/update_profile', 'ProfileController@updateProfile');
+
 Route::post('/cellarSearch', 'SearchController@cellar_Search');
 
 //Route::post('/profile', ['uses' => 'ProfileController@show']);

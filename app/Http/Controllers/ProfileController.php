@@ -28,7 +28,9 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('profile');
+        $profiles = $this->profile();
+
+        return view('profile', compact('profiles'));
     }
 
     /**
@@ -38,8 +40,8 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        //
-        return view('/profile');
+         
+        //return view('/profile');
     }
 
     /**
@@ -56,7 +58,6 @@ class ProfileController extends Controller
                 'lastname' => 'required|max:255',
                 'address' => 'required|max:255',
                 'zipcode' => 'required|integer',
-                //'phonenumber' => 'required|numeric|phone',
             ));
 
         // Store in the database
@@ -70,7 +71,11 @@ class ProfileController extends Controller
         $profile->save();
         flash('Record has been Saved!', 'success');
         // Redirect to another page
-        return view('profile');
+
+        $profiles = $this->profile();
+
+        //return view('profile', compact('profiles'));
+        return view('profile', compact('profiles'));
     }
 
     /**
@@ -104,7 +109,30 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         // Validate the data
+        $this->validate($request, array(
+                'firstname' => 'required|max:255',
+                'lastname' => 'required|max:255',
+                'address' => 'required|max:255',
+                'zipcode' => 'required|integer',
+                //'phonenumber' => 'required|numeric|phone',
+            ));
+
+        // Store in the database
+        $profile = new Profile();
+        $profile->user_id = Auth::user()->id;
+        $profile->firstname = $request->input('firstname');
+        $profile->lastname = $request->input('lastname');
+        $profile->address = $request->input('address');
+        $profile->zipcode = $request->input('zipcode');
+        $profile->phonenumber = $request->input('phonenumber');
+        $profile->save();
+        flash('Record has been Updated!', 'success');
+        // Redirect to another page
+
+        $profiles = $this->profile();
+        //return view('profile', compact('profiles'));
+        return redirect('/profile');
     }
 
     /**
@@ -117,4 +145,26 @@ class ProfileController extends Controller
     {
         //
     }
+
+     /**
+     * Pull all data from the profile table where the user_id equals the auth id.
+     *
+     * @return cellars record set
+     */
+     public function profile() {
+        return (DB::table('profile')->where('user_id', Auth::user()->id)->get());
+    }
+
+    /**
+     * Redirect 
+     *
+     * @return cellars record set
+     */
+     public function updateProfile() {
+
+        $profiles = $this->profile();
+
+        return view('update_profile', compact('profiles'));
+    }
+
 }

@@ -44,12 +44,6 @@
                       User's Name
                     </td>
                     <td class="breweryColumn color">
-                      Brewery
-                    </td>
-                     <td class="breweryColumn color">
-                      Beer name
-                    </td>
-                    <td class="breweryColumn color">
                       Email
                     </td>
                   </tr>
@@ -59,12 +53,6 @@
                     <tr>
                       <td class="breweryColumn">
                         <?php echo $cellar->name; ?>
-                      </td>
-                      <td class="breweryColumn">
-                        <?php echo $cellar->brewery; ?>
-                      </td>
-                      <td class="breweryColumns">
-                        <?php echo $cellar->brewery; ?>
                       </td>
                       <td class="breweryColumns">
                         <?php echo $cellar->email; ?>

@@ -32,7 +32,7 @@
                 </div>
             @endif
 
-            You can search cellars by beer name, brewery, or user name.<br /><br />
+            You can search cellars by beer name, brewery, or user's first or lastname.<br /><br />
           </div>
 
           <!-- Form --> 
@@ -55,7 +55,7 @@
                 {!! Form::text('lastname', null, array('class' => 'form-control')) !!}
               </div>
               <div>
-                  {!! Form::submit('Submit Cellar Search', array('class' => 'btn btn-primary')) !!}
+                  {!! Form::submit('Submit Cellar Search', array('class' => 'btn btn-primary btn-margin-top')) !!}
               </div>
             {!! Form::close() !!}      
           </div>

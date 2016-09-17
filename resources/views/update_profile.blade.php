@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Profile
+    Update Profile
 @endsection
 
 @section('content')
@@ -10,7 +10,7 @@
     <div class="row_5">
         <div class="container">
           <div class="row title">
-             <h1>Profile</h1>
+             <h1>Update Profile</h1>
           </div>
 
           <!-- Flash messages, which are coming from the controller -->
@@ -39,28 +39,29 @@
               <div class="col-lg-6 col-md-6 col-sm-6">
                 
               </div>
-              {!! Form::open(array('route' => 'profile.store')) !!}
+              @foreach($profiles as $pro) 
+                <?php
+
+                  // Set readonlys to nothing so the fields can be edited
+                  $fn_readonly = "";
+                  $ln_readonly = "";
+                  $ad_readonly = "";
+                  $zip_readonly = "";
+                  $ph_readonly = "";
+
+                  // Populating variable from profile database
+                  $id = $pro->id;
+                  $firstname = $pro->firstname;
+                  $lastname = $pro->lastname;
+                  $address = $pro->address;
+                  $zipcode = $pro->zipcode;
+                  $phonenumber = $pro->phonenumber;
+                ?>
+              @endforeach              
+              {!! Form::open(array('method' => 'PATCH', 'route' => ['profile.update', $id])) !!}
               <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 cols-sm-offset-3"">
                    Red denotes a required field<br><br>
                   <div class="space">
-                 
-                  @foreach($profiles as $pro)
-                    <?php
-                      $fn_readonly = "readonly";
-                      $ln_readonly = "readonly";
-                      $ad_readonly = "readonly";
-                      $zip_readonly = "readonly";
-                      $ph_readonly = "readonly";
-
-                      // Populating variable from profile database
-                      $firstname = $pro->firstname;
-                      $lastname = $pro->lastname;
-                      $address = $pro->address;
-                      $zipcode = $pro->zipcode;
-                      $phonenumber = $pro->phonenumber;
-                    ?>
-                  @endforeach
-
                    <?php
                       if (empty($firstname)) {
                         $firstname = "";

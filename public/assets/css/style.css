@@ -293,7 +293,7 @@ header {
 	display: none;
 	top: 51px;
 	left: 0px;
-	width: 110px;
+	width: 150px;
 	padding: 20px 24px 10px;
 	list-style: none;
 	zoom: 1;
@@ -303,7 +303,7 @@ header {
 	text-align: center;
 }
 .tm_navbar .nav ul li:first-child {
-	width: 64px;
+	width: 100px;
 	padding: 0 0 6px;
 	display: block;
 	position: relative;
@@ -1774,6 +1774,14 @@ input.cellarName {
 .color {
 	background-color: #6F8591;
 	color: white;
+}
+
+.btn-margin-top {
+	margin-top: 20px;
+}
+
+.required {
+	color: red;
 }
 
 
