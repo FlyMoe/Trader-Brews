@@ -32,7 +32,7 @@
                 </div>
             @endif
 
-            You can search cellars by beer name, brewery, or user name.<br /><br />
+            If a user's name isn't a clickable link that means they haven't created a cellar yet. Click on the user's name to view their cellar.<br /><br />
 
           </div>
           <div class="row">            

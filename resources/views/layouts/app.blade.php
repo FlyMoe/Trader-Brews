@@ -68,10 +68,10 @@
                       </li>
                     </ul> -->
                   </li>
-                  <li class="{{ Request::is('about_me') ? "active" : "" }}"><a href="{{ url('/about_me') }}">about me</a></li>
                   <li class="{{ Request::is('profile') ? "active" : "" }}"><a href="{{ url('/profile') }}">Profile</a></li>
                   <li class="{{ Request::is('cellar') ? "active" : "" }}"><a href="{{ url('/cellar') }}">Cellar</a></li>
                   <li class="{{ Request::is('search') ? "active" : "" }}"><a href="{{ url('/search') }}">Search</a></li>
+                   <li class="{{ Request::is('about_me') ? "active" : "" }}"><a href="{{ url('/about_me') }}">About</a></li>
                 </ul>
                 <h2 class="navbar-brand-right login">
                     @if (Auth::guest())

@@ -97,21 +97,35 @@ class SearchController extends Controller
 
     public function cellar_Search(Request $request) {
 
-        $beername = $request->input('name');
-        $brewery = $request->input('brewery');
-        // $firstname = $request->input('firstname');
-        // $lastname = $request->input('lastname');
-        $name = $request->input('firstname') . " " . $request->input('lastname');
-
+        // Search the database with the beer name, brewery, firstname, or lastname
         $cellars = DB::table('cellars')
-                    ->join('users', 'cellars.user_id', '=', 'users.id')
-                    //->select('cellars.*', 'profile.*')
-                    ->where('cellars.name', $beername)
-                    ->orWhere('cellars.brewery', $brewery)
-                    ->orWhere('users.name', $name)
-                    ->get();
-        print_r($cellars);
+                    ->join('users', 'cellars.user_id', '=', 'users.id');
+        if (empty($request->input('name')) === false) {
+            // Beer Name
+            $beername = $request->input('name');
+            $cellars = $cellars->where('cellars.name', $beername);
+        } elseif (empty($request->input('brewery')) === false) {
+            // Brewery
+            $brewery = $request->input('brewery');
+            $cellars = $cellars->where('cellars.brewery', $brewery);
+        } elseif (empty($request->input('firstname')) === false && empty($request->input('lastname')) === false) {
+            // Full Name
+            $name = trim($request->input('firstname')) . " " . trim($request->input('lastname'));
+            $cellars = $cellars->where('users.name', $name);
+        } elseif (empty($request->input('firstname')) === false) {
+            // First Name
+            $name = trim($request->input('firstname'));
+            $cellars = $cellars->where('users.name', 'like', $name.'%');
+        } elseif (empty($request->input('lastname')) === false) { 
+            // Last Name
+            $name = trim($request->input('lastname'));
+            $cellars = $cellars->where('users.name', 'like', '%'.$name);
+        }
+        $cellars = $cellars->get();
+
         //printf('<pre>%s</pre>', print_r($cellars, 1));
+
+        // Redirect to search_results blade
         return view('search_results', compact('cellars'));
     }
 

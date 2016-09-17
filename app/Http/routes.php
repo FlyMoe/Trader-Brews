@@ -29,6 +29,8 @@ Route::get('auth/logout', 'Auth\AuthController@logout');
 // Cellar 
 Route::get('/search', 'SearchController@index');
 
+Route::get('/profile', 'ProfileController@index');
+
 Route::post('/cellarSearch', 'SearchController@cellar_Search');
 
 //Route::post('/profile', ['uses' => 'ProfileController@show']);
@@ -78,9 +80,9 @@ Route::Group(['middleware' => ['web']], function () {
 	})->middleware('auth');
 
 	// Profile, login required
-	Route::get('/profile', function () {
-		return view('profile');
-	})->middleware('auth');
+	// Route::get('/profile', function () {
+	// 	return view('profile');
+	// })->middleware('auth');
 
 	// Cellar
 	//Route::GET('/cellar/{id}', 'CellarController@index', ['middleware' => 'auth']);
