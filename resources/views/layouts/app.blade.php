@@ -4,29 +4,29 @@
     <title>@yield('title')</title>
     <meta charset="utf-8">    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/assets/img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon" />
     <meta name = "format-detection" content = "telephone=no" />
     <meta name="description" content="Your description">
     <meta name="keywords" content="Your keywords">
     <meta name="author" content="Your name">
-    <link rel="stylesheet" href="assets/css/bootstrap.css" >
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/camera.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap.css" >
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/camera.css">
     
-    <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/jquery-migrate-1.2.1.js"></script>
-    <script src="assets/js/superfish.js"></script>
-    <script src="assets/js/jquery.mobilemenu.js"></script>
-    <script src="assets/js/jquery.easing.1.3.js"></script>
-    <script src="assets/js/jquery.ui.totop.js"></script>
-    <script src="assets/js/jquery.touchSwipe.min.js"></script>
-    <script src="assets/js/jquery.equalheights.js"></script>
+    <script src="/assets/js/jquery.js"></script>
+    <script src="/assets/js/jquery-migrate-1.2.1.js"></script>
+    <script src="/assets/js/superfish.js"></script>
+    <script src="/assets/js/jquery.mobilemenu.js"></script>
+    <script src="/assets/js/jquery.easing.1.3.js"></script>
+    <script src="/assets/js/jquery.ui.totop.js"></script>
+    <script src="/assets/js/jquery.touchSwipe.min.js"></script>
+    <script src="/assets/js/jquery.equalheights.js"></script>
     
          
-    <script src='assets/js/camera.js'></script>
+    <script src='/assets/js/camera.js'></script>
     <!--[if (gt IE 9)|!(IE)]><!-->
-        <script src="assets/js/jquery.mobile.customized.min.js"></script>
+        <script src="/assets/js/jquery.mobile.customized.min.js"></script>
     <!--<![endif]-->
     
     <script>  
@@ -71,7 +71,7 @@
                   <li class="{{ Request::is('profile') ? "active" : "" }}"><a href="{{ url('/profile') }}">Profile</a>
                      <ul>
                         <li>
-                          <img src="assets/img/arrowup.png" alt=""><a href="{{ url('/update_profile') }}">Update Profile</a>
+                          <img src="/assets/img/arrowup.png" alt=""><a href="{{ url('/update_profile') }}">Update Profile</a>
                         </li>
                       </ul>
                   </li>
@@ -97,12 +97,12 @@
 <footer>
     <div class="container">
         <div class="row">
-            <!-- <div class="col-lg-4 col-md-4 col-sm-4 footercol">
+            <!-- <div class="col-lg-/assets col-md-4 col-sm-4 footercol">
                 <ul class="social_icons clearfix">
-                     <li><a href="#"><img src="assets/img/follow_icon1.png" alt=""></a></li>
-                     <li><a href="#"><img src="assets/img/follow_icon2.png" alt=""></a></li>
-                     <li><a href="#"><img src="assets/img/follow_icon3.png" alt=""></a></li>
-                     <li><a href="#"><img src="assets/img/follow_icon4.png" alt=""></a></li>
+                     <li><a href="#"><img src="/assets/img/follow_icon1.png" alt=""></a></li>
+                     <li><a href="#"><img src="/assets/img/follow_icon2.png" alt=""></a></li>
+                     <li><a href="#"><img src="/assets/img/follow_icon3.png" alt=""></a></li>
+                     <li><a href="#"><img src="/assets/img/follow_icon4.png" alt=""></a></li>
                 </ul>
             </div> -->
             <div class="col-lg-8 col-md-8 col-sm-8 footercol">
@@ -111,8 +111,8 @@
         </div>
     </div>
 </footer>
-<script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/tm-scripts.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/tm-scripts.js"></script>
 </body>
 </html>
 

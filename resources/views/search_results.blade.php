@@ -52,7 +52,7 @@
                   @foreach($cellars as $cellar)
                     <tr>
                       <td class="breweryColumn">
-                        <?php echo $cellar->name; ?>
+                        <a href="/cellarSearch2/{{$cellar->id}}">{{$cellar->name}}</a>
                       </td>
                       <td class="breweryColumns">
                         <?php echo $cellar->email; ?>

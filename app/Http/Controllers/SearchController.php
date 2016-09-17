@@ -121,12 +121,56 @@ class SearchController extends Controller
             $name = trim($request->input('lastname'));
             $cellars = $cellars->where('users.name', 'like', '%'.$name);
         }
-        $cellars = $cellars->get();
+        $cellars = $cellars->groupBy('users.id')->get();
 
         //printf('<pre>%s</pre>', print_r($cellars, 1));
 
         // Redirect to search_results blade
         return view('search_results', compact('cellars'));
+    }
+
+    public function cellar_Search2($id) {
+        //printf('<pre>%s</pre>', print_r($id, 1));
+
+        //Search the database with the beer name, brewery, firstname, or lastname
+        $cellars = DB::table('cellars')->where('user_id', $id)->get();
+        //printf('<pre>%s</pre>', print_r($cellars, 1));
+        $users = DB::table('users')->where('id', $id)->get();
+        $total_beers = $this->total_beers();
+        $unique_beers = $this->unique_beers();
+        $brewery = $this->brewery();
+
+        // Redirect to search_results blade
+        //return view('search_results2', compact('cellars', 'id'));
+        return view('search_results2', compact('cellars', 'users', 'total_beers', 'unique_beers', 'brewery'));
+    }
+
+     /**
+     * Pull all data from the users table where the id equals the auth id.
+     *
+     * @return cellar record set
+     */
+    public function total_beers() {
+        return (Cellar::where('user_id', Auth::user()->id)->count());
+    }
+
+     /**
+     * Pull all data from the cellars table where the id equals the auth id and the name is 
+     * distinct.
+     *
+     * @return cellar record set
+     */
+    public function unique_beers() {
+        return (Cellar::where('user_id', Auth::user()->id)->distinct()->count('name'));
+    }
+
+     /**
+     * Pull all data from the cellars table where the id equals the auth id.
+     *
+     * @return cellar record set
+     */
+    public function brewery() {
+        return (Cellar::where('user_id', Auth::user()->id)->distinct()->count('brewery'));
     }
 
 }

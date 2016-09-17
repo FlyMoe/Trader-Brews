@@ -125,21 +125,25 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title .modal_bgcolor" id="favoritesModalLabel">New Cellar Entry</h4>
+        <h4 class="modal-title modal_bgcolor" id="favoritesModalLabel">New Cellar Entry</h4>
       </div>
       {!! Form::open(array('route' => 'cellar.store', 'class' => 'form-inline')) !!}
       <div class="modal-body">
-        {!! Form::label('brewery', 'Brewery:') !!}<br />
+        * Denotes a required field
+      </div>
+      <div class="modal-body">
+        * {!! Form::label('brewery', 'Brewery:') !!}<br />
         {!! Form::text('brewery', null, array('class' => 'form-control')) !!}
       </div>
       <div class="modal-body">
-        {!! Form::label('name', 'Beer:') !!}<br />
+        * {!! Form::label('name', 'Beer:') !!}<br />
         {!! Form::text('name', null, array('class' => 'form-control')) !!}
       </div>
        <div class="modal-body form-group">
-        {!! Form::label('size', 'Size:') !!}<br />
+        * {!! Form::label('size', 'Size:') !!}<br />
         {!! Form::select('size', 
           array(
+            '' => ['' => ''],
             'American/Imperial' => 
               array('7oz' => '7oz', '12oz' => '12oz', '16oz' => '16oz', '22oz' => '22oz', '24oz' => '24oz', '25oz' => '25oz', '32oz' => '32oz', '40oz' => '40oz', '64oz' => '64oz'), 
             'Metric' => 
@@ -170,4 +174,7 @@
       {!! Form::close() !!}      
     </div>
   </div>
+  <script>
+      $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+  </script>
 @endsection

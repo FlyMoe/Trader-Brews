@@ -62,6 +62,16 @@ class CellarController extends Controller
      */
     public function store(Request $request)
     {
+         // Validate the data
+        $this->validate($request, array(
+            'name' => 'required|max:255',
+            'brewery' => 'required|max:255',
+            'size' => 'required|max:255',
+            'bottle_date' => 'date',
+            'in_cellar' => 'integer',
+            'in_fridge' => 'integer',
+        ));
+
         // Store in the database
         $cellar = new Cellar();
         $cellar->user_id = Auth::user()->id;

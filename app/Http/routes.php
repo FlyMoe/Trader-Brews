@@ -35,6 +35,8 @@ Route::get('/update_profile', 'ProfileController@updateProfile');
 
 Route::post('/cellarSearch', 'SearchController@cellar_Search');
 
+Route::get('/cellarSearch2/{id}', 'SearchController@cellar_Search2');
+
 //Route::post('/profile', ['uses' => 'ProfileController@show']);
 
 Route::resource('profile', 'ProfileController');
