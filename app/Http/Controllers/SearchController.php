@@ -95,6 +95,51 @@ class SearchController extends Controller
         //
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function sendEmail(Request $request)
+    {
+        //printf('<pre>%s</pre>', print_r($request->subject, 1));
+
+        $id = $request->input('id');
+        //$title = $request->input('name');
+        $subject = $request->input('subject');
+        $email_to = $request->input('email');
+        $content = $request->input('message');
+        $email_from = 'trader-brews';
+        Mail::send('/send', array(
+                'title' => $title,
+                'email' => $email,
+                'content' => $content),
+            function($message) use($email_to) {
+              
+                $message->to($email_to, 'Admin')->subject($subject);
+            });
+        //return redirect('/contact')->with('message','Thanks for contacting us!');  
+
+
+        $cellars = DB::table('cellars')->where('user_id', $id)->get();
+        //printf('<pre>%s</pre>', print_r($cellars, 1));
+        $users = DB::table('users')->where('id', $id)->get();
+        // $total_beers = $this->total_beers();
+        // $unique_beers = $this->unique_beers();
+        // $brewery = $this->brewery();
+
+        $total_beers = "";
+        $unique_beers = "";
+        $brewery = "";
+
+         flash('Email was sent!', 'success');
+        // Redirect to search_results blade
+        //return view('search_results2', compact('cellars', 'id'));
+        return view('search_results2', compact('cellars', 'users', 'total_beers', 'unique_beers', 'brewery'));
+    }
+
+
     public function cellar_Search(Request $request) {
 
         // Search the database with the beer name, brewery, firstname, or lastname

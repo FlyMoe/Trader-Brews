@@ -45,6 +45,8 @@ Route::resource('cellar', 'CellarController');
 
 Route::resource('search', 'SearchController');
 
+Route::post('/sendEmail', 'SearchController@sendEmail');
+
 //Route::DELETE('/cellar/{id}', 'CellarrController@destroy');
 
 //Route::resource('register', 'RegisterController');

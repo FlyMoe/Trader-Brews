@@ -43,8 +43,10 @@
 
                <span class="total">Total Beers: {{$total_beers}} | Unique Beers: {{$unique_beers}}  | Breweries: {{$brewery}}</span>
             </h4>
-
+            {!! Form::submit('Send Email To Set Up a Trade', array('class' => 'btn btn-success cellarName', 'data-target' => '#favoritesModal', 'data-toggle' => 'modal')) !!}
+       
           </div>
+
           <div class="row">            
               <div class="table-responsive">
                 <table class="table table-bordered" id="main">
@@ -95,4 +97,46 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('modal')
+<div class="modal fade" id="favoritesModal" 
+     tabindex="-1" role="dialog" 
+     aria-labelledby="favoritesModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header color">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title modal_bgcolor" id="favoritesModalLabel">Email</h4>
+      </div>
+      @foreach( $users as $user)
+      {!! Form::open(array('url' => '/sendEmail')) !!}
+      <div class="modal-body">
+        * Denotes a required field
+      </div>
+      <div class="modal-body">
+        * {!! Form::label('subject', 'Subject:') !!}<br />
+        {!! Form::text('subject', null, array('class' => 'form-control')) !!}
+      </div>
+      <div class="modal-body form-group">
+       * {!! Form::label('message', 'Message:') !!}
+       {!! Form::textarea('message', null, array('class' => 'form-control')) !!}
+      </div>
+      
+      <div class="modal-footer">
+        {!! Form::submit('Close', array('class' => 'btn btn-danger', 'data-dismiss' => 'modal')) !!}
+        {!! Form::hidden('id', $user->id) !!}
+        {!! Form::hidden('email', $user->email) !!}
+        {!! Form::hidden('_method', 'POST') !!}
+        {!! Form::submit('Send Email', array('class' => 'btn btn-primary')) !!}
+      </div>
+      @endforeach
+      {!! Form::close() !!}      
+    </div>
+  </div>
+  <script>
+      $('div.alert').not('.alert-important').delay(5000).fadeOut(350);
+  </script>
 @endsection
