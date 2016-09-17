@@ -52,33 +52,33 @@ return [
             'prefix' => '',
         ],
 
-        'mysql' => [
-            'driver' => 'mysql',
-            'host' => env('DB_HOST', 'sp6xl8zoyvbumaa2.cbetxkdyhwsb.us-east-1.rds.amazonaws.com'),
-            'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'mfkbjjhtgpla5zk5'),
-            'username' => env('DB_USERNAME', 'aufkl5oa1u9jx6nm'),
-            'password' => env('DB_PASSWORD', 'wmiosqvv8ezox91u'),
-            'charset' => 'utf8',
-            'collation' => 'utf8_unicode_ci',
-            'prefix' => '',
-            'strict' => false,
-            'engine' => null,
-        ],
-
-        //  'mysql' => [
+        // 'mysql' => [
         //     'driver' => 'mysql',
-        //     'host' => env('DB_HOST', 'localhost'),
+        //     'host' => env('DB_HOST', 'sp6xl8zoyvbumaa2.cbetxkdyhwsb.us-east-1.rds.amazonaws.com'),
         //     'port' => env('DB_PORT', '3306'),
-        //     'database' => env('DB_DATABASE', 'trader_brews_db'),
-        //     'username' => env('DB_USERNAME', 'root'),
-        //     'password' => env('DB_PASSWORD', 'family99'),
+        //     'database' => env('DB_DATABASE', 'mfkbjjhtgpla5zk5'),
+        //     'username' => env('DB_USERNAME', 'aufkl5oa1u9jx6nm'),
+        //     'password' => env('DB_PASSWORD', 'wmiosqvv8ezox91u'),
         //     'charset' => 'utf8',
         //     'collation' => 'utf8_unicode_ci',
         //     'prefix' => '',
         //     'strict' => false,
         //     'engine' => null,
         // ],
+
+         'mysql' => [
+            'driver' => 'mysql',
+            'host' => env('DB_HOST', 'localhost'),
+            'port' => env('DB_PORT', '3306'),
+            'database' => env('DB_DATABASE', 'trader_brews_db'),
+            'username' => env('DB_USERNAME', 'root'),
+            'password' => env('DB_PASSWORD', 'family99'),
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => '',
+            'strict' => false,
+            'engine' => null,
+        ],
 
         'pgsql' => [
             'driver' => 'pgsql',
