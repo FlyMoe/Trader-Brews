@@ -112,7 +112,7 @@
         <h4 class="modal-title modal_bgcolor" id="favoritesModalLabel">Email</h4>
       </div>
       @foreach( $users as $user)
-      {!! Form::open(array('url' => '/sendEmail')) !!}
+      {!! Form::open(array('url' => '/sendEmail', 'method' => 'POST')) !!}
       <div class="modal-body">
         * Denotes a required field
       </div>

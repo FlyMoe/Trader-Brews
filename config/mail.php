@@ -16,8 +16,8 @@ return [
     |
     */
 
-    //'driver' => env('MAIL_DRIVER', 'smtp'),
-    'driver' => env('smtp'),
+    'driver' => env('MAIL_DRIVER', 'smtp'),
+    //'driver' => 'smtp',
 
     /*
     |--------------------------------------------------------------------------
@@ -30,8 +30,8 @@ return [
     |
     */
 
-    //'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
-    'host' => env('smtp.mailgun.org'),
+    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    //'host' => 'smtp.mailgun.org',
 
     /*
     |--------------------------------------------------------------------------
@@ -44,8 +44,9 @@ return [
     |
     */
 
+    'port' => env('MAIL_PORT', 2525),
     //'port' => env('MAIL_PORT', 587),
-    'port' => env(587),
+    //'port' => 587,
 
     /*
     |--------------------------------------------------------------------------
@@ -72,8 +73,8 @@ return [
     |
     */
 
-    //'encryption' => env('MAIL_ENCRYPTION', 'tls'),
-    'encryption' => env('tls'),
+    'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+    //'encryption' => env('tls'),
 
     /*
     |--------------------------------------------------------------------------
@@ -86,8 +87,9 @@ return [
     |
     */
 
-    //'username' => env('MAIL_USERNAME'),
-    'username' => 'sendgrid_username',
+    'username' => env('MAIL_USERNAME', '169ea759521641'),
+    //'username' => env('MAIL_USERNAME', 'app56373462@heroku.com'),
+    //'username' => 'sendgrid_username',
 
     /*
     |--------------------------------------------------------------------------
@@ -100,8 +102,9 @@ return [
     |
     */
 
-    //'password' => env('MAIL_PASSWORD'),
-    'password' => 'sendgrid_password',
+    'password' => env('MAIL_PASSWORD', '2d0f5a9b6f1163'),
+    //'password' => env('MAIL_PASSWORD', 'hjhlmmhm1379'),
+    //'password' => 'sendgrid_password',
 
     /*
     |--------------------------------------------------------------------------

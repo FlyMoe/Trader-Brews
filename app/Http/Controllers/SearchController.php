@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Cellar;
 use App\User;
 use App\Http\Requests;
+use Illuminate\Support\Facades\Mail;
 
 class SearchController extends Controller
 {
@@ -105,26 +106,33 @@ class SearchController extends Controller
     {
         //printf('<pre>%s</pre>', print_r($request->subject, 1));
 
+        $this->validate($request, [
+            'subject' => 'Required|max:255',
+            'message' => 'Required'
+        ]);
+
+        $data = array(
+            'email' => $request->email,
+            'subject' => $request->subject,
+            'bodyMessage' => $request->message,
+            );        
+
+        // Get the authentication user email
+       
+
+        Mail::send('emails.contact', $data, function ($message) use ($data) {
+            $authUser = DB::table('users')->where('id', Auth::user()->id)->get();
+            $message->from($data['email']);
+            $message->to($authUser[0]->email);
+            $message->subject($data['subject']);
+
+        });
+
         $id = $request->input('id');
-        //$title = $request->input('name');
-        $subject = $request->input('subject');
-        $email_to = $request->input('email');
-        $content = $request->input('message');
-        $email_from = 'trader-brews';
-        Mail::send('/send', array(
-                'title' => $title,
-                'email' => $email,
-                'content' => $content),
-            function($message) use($email_to) {
-              
-                $message->to($email_to, 'Admin')->subject($subject);
-            });
-        //return redirect('/contact')->with('message','Thanks for contacting us!');  
-
-
+        $users = DB::table('users')->where('id', $id)->get();
         $cellars = DB::table('cellars')->where('user_id', $id)->get();
         //printf('<pre>%s</pre>', print_r($cellars, 1));
-        $users = DB::table('users')->where('id', $id)->get();
+        
         // $total_beers = $this->total_beers();
         // $unique_beers = $this->unique_beers();
         // $brewery = $this->brewery();
